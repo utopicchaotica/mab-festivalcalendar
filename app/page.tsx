@@ -1,4 +1,4 @@
-import Image from "next/image";
+/* import Image from "next/image";
 
 export default function Home() {
   return (
@@ -61,5 +61,26 @@ export default function Home() {
         </div>
       </main>
     </div>
+  );
+} */
+
+import Link from "next/link";
+
+export default function HomePage() {
+  return (
+    <main className="min-h-screen p-8">
+      <h1 className="text-3xl font-bold">Festival Calendar</h1>
+
+      <p className="mt-4">
+        Airtable-powered festival schedule.
+      </p>
+
+      <Link
+        href="/schedule"
+        className="mt-6 inline-block rounded bg-black px-4 py-2 text-white"
+      >
+        View schedule
+      </Link>
+    </main>
   );
 }

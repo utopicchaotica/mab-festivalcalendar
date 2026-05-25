@@ -24,3 +24,41 @@ body {
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
 }
+
+.festival-event {
+  text-align: center;
+}
+
+.festival-event .fc-event-main {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+  padding: 2px 4px;
+}
+
+.festival-event .fc-event-title,
+.festival-event .fc-event-time {
+  text-align: center;
+}
+
+.festival-event .fc-event-title {
+  font-weight: 600;
+  font-size: 0.75rem;
+  line-height: 1.1;
+}
+
+.festival-event .fc-event-time {
+  font-size: 0.7rem;
+  opacity: 0.9;
+}
+
+.fc .fc-timegrid-col {
+  min-width: 220px;
+}
+
+/* .festival-empty-resource-day {
+  visibility: hidden !important;
+  pointer-events: none !important;
+} */
