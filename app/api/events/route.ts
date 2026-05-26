@@ -26,6 +26,25 @@ const FIELD_MAP = {
   status: "Status",
 } as const;
 
+type CalendarEvent = {
+  id: string;
+  title: string;
+  start: string;
+  end?: string;
+  resourceId: string;
+  backgroundColor?: string;
+  borderColor?: string;
+  textColor?: string;
+  extendedProps: {
+    venue: string;
+    room: string;
+    status: string;
+    eventType: string;
+    productionTitle?: string;
+    officialTitle?: string;
+  };
+};
+
 function asString(value: AirtableFieldValue): string {
   if (typeof value === "string") return value;
   if (typeof value === "number") return String(value);
