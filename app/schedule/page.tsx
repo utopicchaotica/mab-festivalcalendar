@@ -117,7 +117,7 @@ export default function SchedulePage() {
         {/* Schedule Title */}
         <div className="text-center">
           <h1 className="text-xl font-bold">Festival Schedule ({scheduleSubtitle})</h1>
-          <p className="mt-1 text-lg font-medium text-gray-600">{calendarTitle}</p>
+          <p className="mt-1 text-lg font-medium text-gray-600 dark:text-[#b1aaa0]">{calendarTitle}</p>
         </div>
 
         {/* Right */}
