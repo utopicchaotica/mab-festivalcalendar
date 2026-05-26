@@ -269,7 +269,13 @@ export default function SchedulePage() {
 
                 successCallback(events);
               } catch (error) {
-                failureCallback(error);
+                console.error("FullCalendar event loading error:", error);
+
+                failureCallback(
+                  error instanceof Error
+                    ? error
+                    : new Error(String(error))
+                );
               }
             }}
             eventContent={(eventInfo) => {
