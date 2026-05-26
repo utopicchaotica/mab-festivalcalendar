@@ -54,6 +54,39 @@ body {
   opacity: 0.9;
 }
 
+/* Gridlines */
+.fc,
+.fc-timegrid-event-harness {
+  --fc-border-color: #3a3e41;
+}
+/* Main calendar table/grid borders */
+.fc .fc-scrollgrid,
+.fc .fc-scrollgrid-section > *,
+.fc .fc-scrollgrid td,
+.fc .fc-scrollgrid th {
+  border-color: #3a3e41;
+}
+
+/* Time slot horizontal lines */
+.fc .fc-timegrid-slot {
+  border-color: #3a3e41;
+}
+
+/* Day/resource column vertical lines */
+.fc .fc-timegrid-col {
+  border-color: #3a3e41;
+}
+
+/* Header cell borders */
+.fc .fc-col-header-cell {
+  border-color: #3a3e41;
+}
+
+/* Header Row */
+.fc .fc-col-header {
+  background: #222526;
+}
+
 .fc .fc-timegrid-col {
   min-width: 220px;
 }
