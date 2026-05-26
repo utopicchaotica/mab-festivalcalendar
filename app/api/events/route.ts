@@ -251,10 +251,22 @@ export async function GET(request: Request) {
 
     const formulaParts: string[] = [
       `NOT({${FIELD_MAP.status}} = 'Cancelled')`,
-      `IS_AFTER({${FIELD_MAP.start}}, '2026-07-01')`,
-      `IS_BEFORE({${FIELD_MAP.start}}, '2026-07-31')`,
-      `NOT(FIND('Green Room', {${FIELD_MAP.title}}))`,
+      `OR(
+        IS_AFTER({${FIELD_MAP.start}}, '2026-07-01'),
+        IS_SAME({${FIELD_MAP.start}}, '2026-07-01', 'day')
+      )`,
     ];
+
+    if (!production) {
+      formulaParts.push(
+        `NOT(
+          OR(
+            FIND('green room', LOWER({${FIELD_MAP.title}})),
+            FIND('instrument storage', LOWER({${FIELD_MAP.title}}))
+          )
+        )`
+      );
+    }
 
     if (start && end) {
       formulaParts.push(
