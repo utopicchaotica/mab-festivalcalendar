@@ -296,8 +296,8 @@ export async function GET(request: Request) {
 
     const data = await response.json();
 
-    const events = data.records
-      .map((record: AirtableRecord) => {
+    const events: CalendarEvent[] = data.records
+      .map((record: AirtableRecord): CalendarEvent => {
         const fields = record.fields;
 
         const venueIds = asLinkedRecordIds(fields[FIELD_MAP.venue]);
@@ -334,14 +334,16 @@ export async function GET(request: Request) {
           borderColor: colors.borderColor,
           textColor: colors.textColor,
           extendedProps: {
-              venue,
-              room,
-              status,
-              eventType,
+            venue,
+            room,
+            status,
+            eventType,
+            productionTitle,
+            officialTitle,
           },
         };
       })
-      .filter((event) => {
+      .filter((event: CalendarEvent) => { 
         if (!venueFilter || venueFilter === "all") return true;
 
         return event.extendedProps.venue === venueFilter;
