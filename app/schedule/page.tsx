@@ -187,7 +187,7 @@ export default function SchedulePage() {
         </div>
       </div>
 
-      <div className="w-full overflow-scroll">
+      <div className="calendar-scroll-wrapper w-full overflow-scroll">
         <div className={isAllVenuesView ? "min-w-[2800px]" : "min-w-[1200px]"}>
           <FullCalendar
             // key={venue}

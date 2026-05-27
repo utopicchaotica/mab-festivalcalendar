@@ -54,6 +54,11 @@ body {
   opacity: 0.9;
 }
 
+/* Scrollbar */
+.calendar-scroll-wrapper {
+  scrollbar-gutter: stable;
+}
+
 /* Gridlines */
 .fc,
 .fc-timegrid-event-harness {
