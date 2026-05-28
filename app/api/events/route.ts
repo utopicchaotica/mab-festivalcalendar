@@ -23,6 +23,7 @@ const FIELD_MAP = {
   venue: "Venue",
   room: "Room",
   eventType: "Type",
+  concertType: "Concert Type",
   status: "Status",
 } as const;
 
@@ -92,44 +93,42 @@ function escapeAirtableString(value: string): string {
 
 function getEventColors(eventType: string) {
   switch (eventType) {
+    case "Sound Check":
     case "Rehearsal":
       return {
         backgroundColor: "rgb(98,161,201)",
         borderColor: "rgb(80,155,193)",
-        textColor: "#ffffff",
+        textColor: "#fff",
       };
     case "Concert":
       return {
         backgroundColor: "rgb(53, 89, 176)",
         borderColor: "rgb(41, 87, 174)",
-        textColor: "#ffffff",
+        textColor: "#fff",
       };
     case "Tuning/Touchup":
       return {
         backgroundColor: "rgb(88, 48, 186)",
         borderColor: "rgb(92, 47, 184)",
-        textColor: "#ffffff",
+        textColor: "#fff",
       };
-
     case "Production":
       return {
         backgroundColor: "rgb(176, 3, 47)",
         borderColor: "rgb(161, 33, 51)",
-        textColor: "#ffffff",
+        textColor: "#fff",
       };
-
     case "Masterclass":
       return {
         backgroundColor: "rgb(170, 55, 1)",
         borderColor: "rgb(157, 23, 65)",
-        textColor: "#ffffff",
+        textColor: "#fff",
       };
-
     default:
       return {
         backgroundColor: "rgb(2,177,170)",
-        borderColor: "#rgb(79,174,169)",
-        textColor: "#ffffff",
+        borderColor: "rgb(79,174,169)",
+        textColor: "#fff",
       };
   }
 }
@@ -330,10 +329,13 @@ export async function GET(request: Request) {
         const status = asString(fields[FIELD_MAP.status]);
         const productionTitle = asString(fields[FIELD_MAP.title]);
         const officialTitle = asString(fields[FIELD_MAP.officialTitle]);
+        const concertType = asString(fields[FIELD_MAP.concertType]);
 
-        const displayTitle = production
-          ? productionTitle || officialTitle || "Untitled Event"
-          : officialTitle || productionTitle || "Untitled Event";
+        const displayTitle = `${concertType === "Premium" ? "⭐️ " : ""}${
+          production
+            ? productionTitle || officialTitle || "Untitled Event"
+            : officialTitle || productionTitle || "Untitled Event"
+        }`;
 
         return {
           id: record.id,
@@ -350,6 +352,7 @@ export async function GET(request: Request) {
             room,
             status,
             eventType,
+            concertType,
             productionTitle,
             officialTitle,
           },
