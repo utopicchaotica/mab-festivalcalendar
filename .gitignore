@@ -39,3 +39,17 @@ yarn-error.log*
 # typescript
 *.tsbuildinfo
 next-env.d.ts
+
+app/schedule/page2026*.tsx
+
+app/api/events/route2026*.ts
+
+app/schedule/_page.tsx
+
+app/schedule/week-1/page.tsx
+
+app/schedule/week-2/page.tsx
+
+app/schedule/week-3/_page.tsx
+
+app/schedule/components/WeekSchedule.tsx
